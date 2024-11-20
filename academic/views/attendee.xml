@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_academic_attendee_tree">
+            <field name="name">academic.attendee.tree</field>
+            <field name="model">academic.attendee</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="session_id"/>
+                    <field name="partner_id"/>
+                    <field name="course_id"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_academic_attendee_form">
+            <field name="name">academic.attendee.form</field>
+            <field name="model">academic.attendee</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Attendee Form">  
+                    <sheet>                       
+						<div class="oe_title">
+							<label for="name" class="oe_edit_only" string="Attendee Name"/>
+							<h1>
+								<field name="name"/>
+							</h1>
+						</div>
+							<group>
+								<field name="session_id"/>
+								<field name="partner_id"/>
+							</group>
+						
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+	<record model="ir.ui.view" id="view_academic_attendee_search">
+            <field name="name">academic.attendee.search</field>
+            <field name="model">academic.attendee</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="session_id"/>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+					
+					<group string="Group by">
+						<filter name="group_by_session" string="Session" context="{'group_by':'session_id'}"/>
+						<filter name="group_by_course" string="Course" context="{'group_by':'course_id'}"/>
+						<filter name="group_by_partner" string="Partner" context="{'group_by':'partner_id'}"/>
+					</group>
+                </search>
+            </field>
+        </record>
+
+    </data>
+
+</odoo>
