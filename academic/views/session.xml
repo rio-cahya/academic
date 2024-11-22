@@ -39,29 +39,29 @@
 						<div class="oe_title">
 							<label for="name" class="oe_edit_only" string="Session Name"/>
 							<h1>
-								<field name="name"/>
+								<field name="name" attrs="{'readonly':[('state','!=','draft')]}"/>
 							</h1>
 						</div>
 						
 						<group>
 							<group>
-								<field name="course_id"/>
-								<field name="instructor_id" domain="['|',('is_instructor','=',True),('category_id','=','Instruktur')]"/>
-								<field name="start_date"/>
-                                                                <field name="image_small" widget="image" class="oe_avatar"/>
+								<field name="course_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="instructor_id" domain="['|',('is_instructor','=',True),('category_id','=','Instruktur')]" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="start_date" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="image_small" widget="image" class="oe_avatar" attrs="{'readonly':[('state','!=','draft')]}"/>
 							</group>
 
 							<group>
-								<field name="duration"/>
-								<field name="seats"/>
-								<field name="taken_seats" widget="progressbar"/>
-								<field name="active"/>
+								<field name="duration" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="seats" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="taken_seats" widget="progressbar" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="active" attrs="{'readonly':[('state','!=','draft')]}"/>
 							</group>
 						</group>
 						
 						<notebook>
 							<page string="Attendees">
-								<field name="attendee_ids">
+								<field name="attendee_ids" attrs="{'readonly':[('state','!=','draft')]}">
 					                <tree>
 										<field name="name"/>
 										<field name="session_id"/>

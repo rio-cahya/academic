@@ -2,7 +2,7 @@
 <odoo>
     <data>
 
-        <record model="ir.actions.act_window" id="action_course_list">
+        <record model="ir.actions.act_window" id="action_course_name">
             <field name="name">Daftar Course</field>
             <field name="res_model">academic.course</field>
             <field name="help" type="html">
@@ -13,7 +13,7 @@
 			</field>
         </record> 
 
-        <record model="ir.actions.act_window" id="action_session_list">
+        <record model="ir.actions.act_window" id="action_session_name">
             <field name="name">Daftar Session</field>
             <field name="res_model">academic.session</field>
 		<field name="view_mode">tree,form,calendar,graph,kanban</field>
@@ -25,7 +25,7 @@
 			</field>
         </record> 
 
-         <record model="ir.actions.act_window" id="action_attendee_list">
+         <record model="ir.actions.act_window" id="action_attendee_name">
             <field name="name">Daftar Attendee</field>
             <field name="res_model">academic.attendee</field>
 			<field name="view_mode">tree,form</field>
@@ -37,7 +37,7 @@
 			</field>
         </record> 
 
-         <record model="ir.actions.act_window" id="action_instruktur_list">
+         <record model="ir.actions.act_window" id="action_instruktur_name">
             <field name="name">Daftar Instruktur</field>
             <field name="res_model">res.partner</field>
             <field name="view_mode">tree,form</field>
@@ -61,28 +61,28 @@
             id="menu_academic_course"
             name="Course" 
             parent="academic_1" 
-            action="action_course_list" 
+            action="action_course_name" 
             sequence="20"/> 
 
 		<menuitem 
             id="menu_academic_session"
             name="Session" 
             parent="academic_1" 
-            action="action_session_list" 
+            action="action_session_name" 
             sequence="30"/> 
 
 		<menuitem 
             id="menu_academic_attendee"
             name="Attendee" 
             parent="academic_1" 
-            action="action_attendee_list" 
+            action="action_attendee_name" 
             sequence="40"/> 
 
 		<menuitem 
             id="menu_academic_instruktur"
             name="Instruktur" 
             parent="academic_1" 
-            action="action_instruktur_list" 
+            action="action_instruktur_name" 
             sequence="50"/> 
 
     </data>
