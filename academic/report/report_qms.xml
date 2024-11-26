@@ -1,0 +1,979 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>  
+        <template id="report_qms">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-if="o and 'company_id' in o">
+                        <!-- <t t-set="company" t-value="o.company_id"></t> -->
+                    </t>
+                    <t t-if="not o or not 'company_id' in o">
+                        <!-- <t t-set="company" t-value="res_company"></t> -->
+                    </t>
+                    <div class="header">
+                        <table style="border-color:#fff; width:100%;">
+                            <tr style="border-color:#fff;  width:100%;">
+                                <td class="text-left" style="border-color:#fff;  width:33%;">
+                                    <img src="/qms/static/description/logobp145.png" height="84px" width="84px" style="border-color:#fff;"/>
+                                </td>
+                                <td class="text-center" style="border-color:#fff;  width:33%;">
+                                    <div class="text-center">
+                                        <span style="border-color:#fff;" t-field="o.ema_number" />
+                                    </div>
+                                </td>
+                                <td class="text-right" style="border-color:#fff; width:33%;">
+                                    <img src="/qms/static/description/logotangguh.png" height="84px" width="84px" style="border-color:#fff;"/>
+                                </td>   
+                            </tr>
+                        </table>
+                    </div>
+
+                    <t t-call="web.basic_layout">
+                        <div class="page">
+							<t t-if="o.state == 'emaisued'">
+                                <div>
+                                    <table class="table table-sm table-report" style="width:100%" border-collapse="collapse" >
+                                        <tbody>
+                                            <tr style="border-color:#fff;">
+                                                <th style=" width:4%; border-color:#fff; font-size:9px;"></th>
+                                                <th style=" width:34%; border-color:#fff; font-size:9px;"></th>
+                                                <th style=" width:14%; border-color:#fff; font-size:9px;"></th>
+                                                <th style=" width:15%; border-color:#fff; font-size:9px;"></th>
+                                                <th style=" width:15%; border-color:#fff; font-size:9px;"></th>
+                                                <th style=" width:10%; border-color:#fff; font-size:9px;"></th>
+                                                <th style=" width:8%; border-color:#fff; font-size:7px;"></th>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="7" class="border-black; text-center; text-align" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <div class="text-center">
+                                                        <strong><br />Equipment Mobilization Approval Data / Persetujuan Mobilisasi Peralatan<br /><br />( To be completed and approved prior to dispatch to site/Untuk dilengkapi sebelum pengiriman ke kawasan )</strong>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>A</strong></td>
+                                                <td colspan="6" style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>Contractor's Equipment Data/Data Peralatan Kontraktor</strong></td>
+                                            </tr>
+                                            <tr class="border-black" > 
+                                                    <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>1</span>
+                                                        <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span>Type Of Equipment: <br /><span class="font-italic"> Jenis Peralatan </span></span>
+                                                        </td>
+                                                        <td colspan="5" class="text-right;border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span t-field="o.type_equipment" />
+                
+                                                        </td>
+                                                    </td>    
+                                                </tr>
+                                                <tr class="border-black" > 
+                                                    <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>2</span>
+                                                        <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span>Number Of Equipment: <br /><span class="font-italic"> Jumlah Peralatan </span></span>
+                                                        </td>
+                                                        <td colspan="5" class="text-right;border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span t-field="o.number_equipment" />
+                                                        </td>
+                                                    </td>    
+                                                </tr>
+                                                <tr class="border-black" > 
+                                                    <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>3</span>
+                                                        <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span>Usage: Explain In Detail Exact Use And Location Of Use <br /><span class="font-italic"> Penggunaan: Jelaskan Secara Terperinci Penggunaan Serta Lokasinya</span></span>
+                                                        </td>
+                                                        <td colspan="5" class="text-right;border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span t-field="o.usage" />
+                                                        </td>
+                                                    </td>    
+                                                </tr>
+                                                <tr class="border-black" > 
+                                                    <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>4</span>
+                                                        <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span>Contractor Name: <br /><span class="font-italic"> Nama Kontraktor:</span></span>
+                                                        </td>
+                                                        <td colspan="5" class="text-right;border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span t-field="o.contractor_name" />
+                                                        </td>
+                                                    </td>    
+                                                </tr>
+                                                <tr class="border-black" > 
+                                                    <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>5</span>
+                                                        <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span>Contract Name: <br /><span class="font-italic"> Nama Kontrak:</span></span>
+                                                        </td>
+                                                        <td colspan="5" class="text-right;border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span t-field="o.contract_name" />
+                                                        </td>
+                                                    </td>    
+                                                </tr>
+                                                <tr class="border-black" > 
+                                                    <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>6</span>
+                                                        <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span>Contract Period: <br /><span class="font-italic"> Periode Kontrak: </span></span>
+                                                        </td>
+                                                        <td colspan="5" class="text-right;border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span t-field="o.contract_period_from" />  <span t-field="o.contract_period_to" />
+                                                        </td>
+                                                    </td>    
+                                                </tr>
+                                                <tr class="border-black" > 
+                                                    <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>7</span>
+                                                        <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span>Contract Owner Function Manager: <br /><span class="font-italic"> Manager Pemilik Kontrak: </span></span>
+                                                        </td>
+                                                        <td colspan="5" class="text-right;border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span t-field="o.contract_owner" /> 
+                                                        </td>
+                                                    </td>    
+                                                </tr>
+                                            <tr>
+                                                <td style=" width:4%; background-color:#66d138 !important;border: 1px !important; font-size:9px; border-style: solid !important;"><strong>B</strong></td>
+                                                <td colspan="2" style="background-color:#66d138 !important;border: 1px !important; font-size:9px; border-style: solid !important;"><strong>Mandatory 3rd Party Inspection  <br /><span class="font-italic"> Inspeksi Wajib Oleh Pihak Ke-3</span></strong></td>
+                                                <td colspan="4" style=" background-color:#66d138 !important;border: 1px !important; font-size:9px; border-style: solid !important;"><strong>Physically Check And Verified By  <br /><span class="font-italic"> Diperiksa Secara Fisik Dan Diferivikasi Oleh</span></strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>Company Name:  <br /><span class="font-italic"> Nama Perusahaan</span></span></td>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <!-- <span t-field="o.vendor_name"/> --></td>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>Nama/Name</span></td>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>Position/Posisi</span></td>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;" colspan="2">
+                                                    <span>Sign/Tanda Tangan</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>1</span></td>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>Pemeriksaan Checks: <br /><span class="font-italic">Sertifikasi</span></span></td>
+                                                <td class="font-weight-bold" style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <t t-if="o.cert_check">
+                                                        <span>Yes</span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span>No</span>
+                                                    </t>
+                                                </td>
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_by1" /><br/>
+                                                    </div>
+                                                </td>
+
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_position1" /><br/>
+                                                    </div>
+                                                </td>   
+                                                
+                                                <td rowspan="2" style=" border: 1px; border-bottom-color:#fff; border-right-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/>
+                                                    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700" rel="stylesheet">
+<div class="text-left" style="font-family: 'Caveat', cursive; font-size: 12px;">
+                                                                    <span t-field="o.verif_by1" /><br/>
+                                                                </div>
+                                                            </link> 
+                                                        </link>  
+                                                    </link>     
+                                                </td>
+                                                <td rowspan="2" style=" border: 1px; border-bottom-color:#fff; border-style: solid !important;">
+                                                     <t t-if="o.verif_by1">
+                                                        <br/>
+                                                        <div class="text-align-center" style="font-size:6px;">
+                                                           <span>Digitally signed by </span><span t-field="o.verif_by1" /><span style="color:#fff;">.</span><span t-field="o.date_for_verificator"/>
+                                                        </div>
+                                                    </t>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>2</span></td>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>Physically Checked: <br /><span class="font-italic">Pemeriksaan Fisik</span></span></td>
+                                                <td class="font-weight-bold" style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <t t-if="o.physic_check">
+                                                        <span>Yes</span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span>No</span>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>3</span></td>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>Function Tested: <br /><span class="font-italic">Uji Fungsi</span></span></td>
+                                                <td  class="font-weight-bold" style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <t t-if="o.function_test">
+                                                        <span>Yes</span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span>No</span>
+                                                    </t>
+                                                </td>
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_by2" /><br/>
+                                                     </div>
+                                                </td>
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;  ">
+                                                    <br/><br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_position2" /><br/>
+                                                    </div>
+                                                </td>
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; border-right-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/>
+                                                     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700" rel="stylesheet">
+<div class="text-left" style="font-family: 'Caveat', cursive; font-size: 12px;">
+                                                                    <span t-field="o.verif_by2" /><br/>
+                                                                </div>
+                                                            </link> 
+                                                        </link>  
+                                                    </link>
+                                                </td>
+                                                <td rowspan="2" style=" border: 1px; border-bottom-color:#fff; border-style: solid !important;">
+                                                    <t t-if="o.verif_by2">
+                                                        <br/>
+                                                        <div class="text-align-center" style="font-size:6px;">
+                                                           <span>Digitally signed by </span><span t-field="o.verif_by2" /><span style="color:#fff;">.</span><span t-field="o.date_for_verificator"/>
+                                                        </div>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>4</span></td>
+                                                <td colspan="2" style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>I declare I have performed all tests and inspection have performed and
+    the machine and is in safe condition to be used. Maintenance records
+    have been verified and no defect exist to prevent its safe operation/ <br /><span class="font-italic">Saya menyatakan bahwa saya telah melakukan inspeksi dan mesin
+    dalam keadaan aman untuk dioperasikan. Catatan perawatan telah
+    diverifikasi dan tidak ada kerusakan yang mengakibatkan tidak aman
+    untuk dioperasikan</span></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:9px; background-colverifor:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>C</strong></td>
+                                                <td colspan="2" style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>Records and certification requirements/Persyaratan pencatatan dan sertifikasi</strong></td>
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_by3" /><br/>
+                                                    </div>
+                                                </td>
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                   <div class="text-center">
+                                                        <span t-field="o.verif_position3" /><br/>
+                                                    </div>
+                                                </td>
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; border-right-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700" rel="stylesheet">
+<div class="text-left" style="font-family: 'Caveat', cursive; font-size: 12px;">
+                                                                    <span t-field="o.verif_by3" /><br/>
+                                                                </div>
+                                                            </link> 
+                                                        </link>  
+                                                    </link>
+                                                </td>
+                                                <td rowspan="2" style=" border: 1px; border-bottom-color:#fff; border-style: solid !important;">
+                                                     <t t-if="o.verif_by3">
+                                                        <div class="text-align-center" style="font-size:6px;">
+                                                           <span>Digitally signed by </span><span t-field="o.verif_by3" /><span style="color:#fff;">.</span><span t-field="o.date_for_verificator"/>
+                                                        </div>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-black" > 
+                                                <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>1</span>
+                                                    <td colspan="2" class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>Maintenance Records: (List Historical maintenance records/maintenance requirement and spares for site safe operations)<br /><span class="font-italic"> Catatan Perawatan: (Daftar riwayat pencatatan perawatan/persyaratan perawatan dan suku cadang untuk operasi aman di kawasan)</span><br /><span class="font-weight-bold">[</span><span class="font-weight-bold" t-field="o.maint_record"/><span class="font-weight-bold">]</span></span>
+                                                    </td>
+                                                </td>    
+                                            </tr>
+                                            <tr> 
+                                                <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>2</span>
+                                                    <td colspan="2" class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>Independence 3rd Party Inspection Documentation: (To be reviewed and approved by OA and relevant TA):<br /><span class="font-italic"> Sertifikasi: (Sertifikat spesifik untuk semua peralatan dan masa berlaku) catatan: tidak ada peralatan yang dikirim dengan masa berlaku kurang dari 6 bulan</span><br /><span class="font-weight-bold">[</span><span class="font-weight-bold" t-field="o.record_doc"/><span class="font-weight-bold">]</span></span>
+                                                    </td>
+                                                </td> 
+                                                <td style="border: 1px; border-bottom-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_by4" /><br/>
+                                                    </div>
+                                                </td>  
+                                                <td style="border: 1px; border-bottom-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_position4" /><br/>
+                                                    </div>
+                                                </td> 
+                                                <td style="border: 1px; border-bottom-color:#fff; border-right-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700" rel="stylesheet">
+<div class="text-left" style="font-family: 'Caveat', cursive; font-size: 12px;">
+                                                                    <span t-field="o.verif_by4" /><br/>
+                                                                </div>
+                                                            </link> 
+                                                        </link>  
+                                                    </link>
+                                                </td> 
+                                                 <td style=" border: 1px; border-bottom-color:#fff; border-style: solid !important;">
+                                                     <t t-if="o.verif_by4">
+                                                        <div class="text-align-center" style="font-size:6px;">
+                                                           <span>Digitally signed by </span><span t-field="o.verif_by4" /><span style="color:#fff;">.</span><span t-field="o.date_for_verificator"/>
+                                                        </div>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                            <tr> 
+                                                <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>3</span>
+                                                    <td colspan="2" class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>Certification (Specific all equipment certification and date of expiry) note: no equipment to be dispatched with less than 6 months validation<br /><span class="font-italic"> Laporan Inspeksi pihak ke-3 (untuk ditinjau dan disetujui oleh OA atau TA yang relevan)</span><br /><span class="font-weight-bold">[</span><span class="font-weight-bold" t-field="o.certificat"/><span class="font-weight-bold">]</span></span>
+                                                    </td>
+                                                </td>
+                                                <td style="border: 1px; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_by5" /><br/>
+                                                    </div>
+                                                </td>  
+                                                <td style="border: 1px; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_position5" /><br/>
+                                                    </div>
+                                                </td> 
+                                                <td style="border: 1px; border-top-color:#fff; border-right-color:#fff; font-size:9px; border-style: solid !important;">
+                                                     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700" rel="stylesheet">
+<div class="text-left" style="font-family: 'Caveat', cursive; font-size: 12px;">
+                                                                    <span t-field="o.verif_by5" /><br/>
+                                                                </div>
+                                                            </link> 
+                                                        </link>  
+                                                    </link>
+                                                </td>
+                                                 <td style=" border: 1px; border-style: solid !important;">
+                                                     <t t-if="o.verif_by5">
+                                                        <div class="text-align-center" style="font-size:6px;">
+                                                           <span>Digitally signed by </span><span t-field="o.verif_by5" /><span style="color:#fff;">.</span><span t-field="o.date_for_verificator"/>
+                                                        </div>
+                                                    </t>
+                                                </td>     
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>D</strong></td>
+                                                <td colspan="6" style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>Originator/Dibuat Oleh</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td rowspan="2" style="font-size:9px; border: 1px !important; border-style: solid !important;"></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><strong>Nama/Name</strong></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><strong>Nama/Name</strong></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><strong>Function/Dept</strong></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><strong>Date/Tanggal</strong></td>
+                                                <td colspan="2" style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><strong>Signature/Tanda Tangan</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <!-- <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><strong></strong></td> -->
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><span>Single Point Accountability</span></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">
+                                                    <span t-field="o.originator_name" />
+                                                </td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">
+                                                    <span t-field="o.originator_function" />
+                                                </td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">
+													
+                                                    <span t-field="o.date_user_approve" t-options='{"format": "dd/M/yyyy"}'/>
+                                                </td>
+                                                <td style="font-size:9px; border-color:#fff; ">
+                                                     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700" rel="stylesheet">
+<div class="text-left" style="font-family: 'Caveat', cursive; font-size: 12px;">
+                                                                    <span t-field="o.originator_name" /><br/>
+                                                                </div>
+                                                            </link> 
+                                                        </link>  
+                                                    </link>
+                                                </td>
+                                                <td style=" border: 1px; border-style: solid !important; border-left-color:#fff;">
+                                                     <t t-if="o.originator_name">
+                                                        <div class="text-align-center" style="font-size:6px;">
+                                                           <span>Digitally signed by </span><span t-field="o.originator_name" /><span style="color:#fff;">.</span><span t-field="o.date_user_approve"/>
+                                                        </div>
+                                                    </t>
+                                                </td>
+                                             </tr>   
+                                            <tr>
+                                                <td style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>E</strong></td>
+                                                <td colspan="6" style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>Approval/Persetujuan</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:9px; border: 1px !important; border-style: solid !important;">
+                                                </td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><span>Operation Quality and Certification</span></td>
+                                                <td colspan="2" style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">
+                                                    <span t-field="o.qmmanager_name" />
+                                                </td>
+                                                <t t-if="o.qmmanager_name">
+                                                    <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">
+                                                        <span t-field="o.date_qmmanager_approve" />
+                                                    </td>
+                                                </t>
+                                                <td style="font-size:9px; border-color:#fff; ">
+                                                     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700" rel="stylesheet">
+<div class="text-left" style="font-family: 'Caveat', cursive; font-size: 12px;">
+                                                                    <span t-field="o.qmmanager_name" /><br/>
+                                                                </div>
+                                                            </link> 
+                                                        </link>  
+                                                    </link>
+                                                </td>
+                                                <td style=" border: 1px; border-style: solid !important; border-left-color:#fff;">
+                                                     <t t-if="o.qmmanager_name">
+                                                        <div class="text-align-center" style="font-size:6px;">
+                                                           <span>Digitally signed by </span><span t-field="o.qmmanager_name" /><span style="color:#fff;">.</span><span t-field="o.date_qmmanager_approve"/>
+                                                        </div>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>F</strong></td>
+                                                <td colspan="6" style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>Approval for Deviation by TA/Persetujuan jika ada deviasi oleh TA</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">1</td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">TA-OA/EA</td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                                <td colspan="2" style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">2</td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">TA-OA/EA</td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                                <td colspan="2" style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                            </tr>
+                                            <tr style="border-color:#fff;">
+                                                <td>
+                                                </td>
+                                                <td colspan="7" style="border-color:#fff; font-size:9px;">
+                                                    <div t-if="o.note_find != false">
+                                                        <span>Note: </span><span class="text-danger" t-field="o.note_find" /><br/>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                   
+                                </div>
+                            </t>
+							<t t-else="">
+                                <div style="background-image:url(/qms/static/description/draft-ema.png);background-size:1000px 1000px;background-position:center; position:absolute; min-height:1080px;">
+                                   <table class="table table-sm table-report" style="width:100%" border-collapse="collapse" >
+                                        <tbody>
+                                            <tr style="border-color:#fff;">
+                                                <th style=" width:4%; border-color:#fff; font-size:9px;"></th>
+                                                <th style=" width:34%; border-color:#fff; font-size:9px;"></th>
+                                                <th style=" width:14%; border-color:#fff; font-size:9px;"></th>
+                                                <th style=" width:15%; border-color:#fff; font-size:9px;"></th>
+                                                <th style=" width:15%; border-color:#fff; font-size:9px;"></th>
+                                                <th style=" width:10%; border-color:#fff; font-size:9px;"></th>
+                                                <th style=" width:8%; border-color:#fff; font-size:7px;"></th>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="7" class="border-black; text-center; text-align" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <div class="text-center">
+                                                        <strong><br />Equipment Mobilization Approval Data / Persetujuan Mobilisasi Peralatan<br /><br />( To be completed and approved prior to dispatch to site/Untuk dilengkapi sebelum pengiriman ke kawasan )</strong>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>A</strong></td>
+                                                <td colspan="6" style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>Contractor's Equipment Data/Data Peralatan Kontraktor</strong></td>
+                                            </tr>
+                                            <tr class="border-black" > 
+                                                    <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>1</span>
+                                                        <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span>Type Of Equipment: <br /><span class="font-italic"> Jenis Peralatan </span></span>
+                                                        </td>
+                                                        <td colspan="5" class="text-right;border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span t-field="o.type_equipment" />
+                                                        </td>
+                                                    </td>    
+                                                </tr>
+                                                <tr class="border-black" > 
+                                                    <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>2</span>
+                                                        <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span>Number Of Equipment: <br /><span class="font-italic"> Jumlah Peralatan </span></span>
+                                                        </td>
+                                                        <td colspan="5" class="text-right;border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span t-field="o.number_equipment" />
+                                                        </td>
+                                                    </td>    
+                                                </tr>
+                                                <tr class="border-black" > 
+                                                    <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>3</span>
+                                                        <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span>Usage: Explain In Detail Exact Use And Location Of Use <br /><span class="font-italic"> Penggunaan: Jelaskan Secara Terperinci Penggunaan Serta Lokasinya</span></span>
+                                                        </td>
+                                                        <td colspan="5" class="text-right;border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span t-field="o.usage" />
+                                                        </td>
+                                                    </td>    
+                                                </tr>
+                                                <tr class="border-black" > 
+                                                    <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>4</span>
+                                                        <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span>Contractor Name: <br /><span class="font-italic"> Nama Kontraktor:</span></span>
+                                                        </td>
+                                                        <td colspan="5" class="text-right;border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span t-field="o.contractor_name" />
+                                                        </td>
+                                                    </td>    
+                                                </tr>
+                                                <tr class="border-black" > 
+                                                    <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>5</span>
+                                                        <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span>Contract Name: <br /><span class="font-italic"> Nama Kontrak:</span></span>
+                                                        </td>
+                                                        <td colspan="5" class="text-right;border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span t-field="o.contract_name" />
+                                                        </td>
+                                                    </td>    
+                                                </tr>
+                                                <tr class="border-black" > 
+                                                    <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>6</span>
+                                                        <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span>Contract Period: <br /><span class="font-italic"> Periode Kontrak: </span></span>
+                                                        </td>
+                                                        <td colspan="5" class="text-right;border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span t-field="o.contract_period_from" />   <span t-field="o.contract_period_to" />
+                                                        </td>
+                                                    </td>    
+                                                </tr>
+                                                <tr class="border-black" > 
+                                                    <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>7</span>
+                                                        <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span>Contract Owner Function Manager: <br /><span class="font-italic"> Manager Pemilik Kontrak: </span></span>
+                                                        </td>
+                                                        <td colspan="5" class="text-right;border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                            <span t-field="o.contract_owner" /> 
+                                                        </td>
+                                                    </td>    
+                                                </tr>
+                                            <tr>
+                                                <td style=" width:4%; background-color:#66d138 !important;border: 1px !important; font-size:9px; border-style: solid !important;"><strong>B</strong></td>
+                                                <td colspan="2" style="background-color:#66d138 !important;border: 1px !important; font-size:9px; border-style: solid !important;"><strong>Mandatory 3rd Party Inspection  <br /><span class="font-italic"> Inspeksi Wajib Oleh Pihak Ke-3</span></strong></td>
+                                                <td colspan="4" style=" background-color:#66d138 !important;border: 1px !important; font-size:9px; border-style: solid !important;"><strong>Physically Check And Verified By  <br /><span class="font-italic"> Diperiksa Secara Fisik Dan Diferivikasi Oleh</span></strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>Company Name:  <br /><span class="font-italic"> Nama Perusahaan</span></span></td>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <!-- <span t-field="o.vendor_name"/> --></td>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>Nama/Name</span></td>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>Position/Posisi</span></td>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;" colspan="2">
+                                                    <span>Sign/Tanda Tangan</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>1</span></td>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>Pemeriksaan Checks: <br /><span class="font-italic">Sertifikasi</span></span></td>
+                                                <td class="font-weight-bold" style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <t t-if="o.cert_check">
+                                                        <span>Yes</span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span>No</span>
+                                                    </t>
+                                                </td>
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_by1" /><br/>
+                                                    </div>
+                                                </td>
+
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_position1" /><br/>
+                                                    </div>
+                                                </td>   
+                                                
+                                                <td rowspan="2" style=" border: 1px; border-bottom-color:#fff; border-right-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/>
+                                                    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700" rel="stylesheet">
+<div class="text-left" style="font-family: 'Caveat', cursive; font-size: 12px;">
+                                                                    <span t-field="o.verif_by1" /><br/>
+                                                                </div>
+                                                            </link> 
+                                                        </link>  
+                                                    </link>     
+                                                </td>
+                                                <td rowspan="2" style=" border: 1px; border-bottom-color:#fff; border-style: solid !important;">
+                                                     <t t-if="o.verif_by1">
+                                                        <br/>
+                                                        <div class="text-align-center" style="font-size:6px;">
+                                                           <span>Digitally signed by </span><span t-field="o.verif_by1" /><span style="color:#fff;">.</span><span t-field="o.date_for_verificator"/>
+                                                        </div>
+                                                    </t>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>2</span></td>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>Physically Checked: <br /><span class="font-italic">Pemeriksaan Fisik</span></span></td>
+                                                <td class="font-weight-bold" style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <t t-if="o.physic_check">
+                                                        <span>Yes</span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span>No</span>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>3</span></td>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>Function Tested: <br /><span class="font-italic">Uji Fungsi</span></span></td>
+                                                <td  class="font-weight-bold" style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <t t-if="o.function_test">
+                                                        <span>Yes</span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span>No</span>
+                                                    </t>
+                                                </td>
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_by2" /><br/>
+                                                     </div>
+                                                </td>
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;  ">
+                                                    <br/><br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_position2" /><br/>
+                                                    </div>
+                                                </td>
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; border-right-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/>
+                                                     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" >
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700;family=Dancing+Script;display=swap" rel="stylesheet">
+<div class="text-left" style="font-family: 'Caveat', cursive; font-size: 12px;">
+                                                                    <span t-field="o.verif_by2" /><br/>
+                                                                </div>
+                                                            </link> 
+                                                        </link>  
+                                                    </link>
+                                                </td>
+                                                <td rowspan="2" style=" border: 1px; border-bottom-color:#fff; border-style: solid !important;">
+                                                    <t t-if="o.verif_by2">
+                                                        <br/>
+                                                        <div class="text-align-center" style="font-size:6px;">
+                                                           <span>Digitally signed by </span><span t-field="o.verif_by2" /><span style="color:#fff;">.</span><span t-field="o.date_for_verificator"/>
+                                                        </div>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>4</span></td>
+                                                <td colspan="2" style=" border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>I declare I have performed all tests and inspection have performed and
+    the machine and is in safe condition to be used. Maintenance records
+    have been verified and no defect exist to prevent its safe operation/ <br /><span class="font-italic">Saya menyatakan bahwa saya telah melakukan inspeksi dan mesin
+    dalam keadaan aman untuk dioperasikan. Catatan perawatan telah
+    diverifikasi dan tidak ada kerusakan yang mengakibatkan tidak aman
+    untuk dioperasikan</span></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:9px; background-colverifor:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>C</strong></td>
+                                                <td colspan="2" style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>Records and certification requirements/Persyaratan pencatatan dan sertifikasi</strong></td>
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_by3" /><br/>
+                                                    </div>
+                                                </td>
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                   <div class="text-center">
+                                                        <span t-field="o.verif_position3" /><br/>
+                                                    </div>
+                                                </td>
+                                                <td rowspan="2" style="border: 1px; border-bottom-color:#fff; border-right-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700.family=Dancing+Script.display=swap" rel="stylesheet">
+<div class="text-left" style="font-family: 'Caveat', cursive; font-size: 12px;">
+                                                                        <span t-field="o.verif_by3" /><br/>
+                                                                    </div>
+                                                            </link> 
+                                                        </link>  
+                                                    </link>
+                                                </td>
+                                                <td rowspan="2" style=" border: 1px; border-bottom-color:#fff; border-style: solid !important;">
+                                                     <t t-if="o.verif_by3">
+                                                        <div class="text-align-center" style="font-size:6px;">
+                                                           <span>Digitally signed by </span><span t-field="o.verif_by3" /><span style="color:#fff;">.</span><span t-field="o.date_for_verificator"/>
+                                                        </div>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-black" > 
+                                                <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>1</span>
+                                                    <td colspan="2" class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>Maintenance Records: (List Historical maintenance records/maintenance requirement and spares for site safe operations)<br /><span class="font-italic"> Catatan Perawatan: (Daftar riwayat pencatatan perawatan/persyaratan perawatan dan suku cadang untuk operasi aman di kawasan)</span><br /><span class="font-weight-bold">[</span><span class="font-weight-bold" t-field="o.maint_record"/><span class="font-weight-bold">]</span></span>
+                                                    </td>
+                                                </td>    
+                                            </tr>
+                                            <tr> 
+                                                <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>2</span>
+                                                    <td colspan="2" class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>Independence 3rd Party Inspection Documentation: (To be reviewed and approved by OA and relevant TA):<br /><span class="font-italic"> Sertifikasi: (Sertifikat spesifik untuk semua peralatan dan masa berlaku) catatan: tidak ada peralatan yang dikirim dengan masa berlaku kurang dari 6 bulan</span><br /><span class="font-weight-bold">[</span><span class="font-weight-bold" t-field="o.record_doc"/><span class="font-weight-bold">]</span></span>
+                                                    </td>
+                                                </td> 
+                                                <td style="border: 1px; border-bottom-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_by4" /><br/>
+                                                    </div>
+                                                </td>  
+                                                <td style="border: 1px; border-bottom-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_position4" /><br/>
+                                                    </div>
+                                                </td> 
+                                                <td style="border: 1px; border-bottom-color:#fff; border-right-color:#fff; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700" rel="stylesheet">
+<div class="text-left" style="font-family: 'Caveat', cursive; font-size: 12px;">
+                                                                    <span t-field="o.verif_by4" /><br/>
+                                                                </div>
+                                                            </link> 
+                                                        </link>  
+                                                    </link>
+                                                </td> 
+                                                 <td style=" border: 1px; border-bottom-color:#fff; border-style: solid !important;">
+                                                     <t t-if="o.verif_by4">
+                                                        <div class="text-align-center" style="font-size:6px;">
+                                                           <span>Digitally signed by </span><span t-field="o.verif_by4" /><span style="color:#fff;">.</span><span t-field="o.date_for_verificator"/>
+                                                        </div>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                            <tr> 
+                                                <td class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                    <span>3</span>
+                                                    <td colspan="2" class="border-black" style="border: 1px !important; font-size:9px; border-style: solid !important;">
+                                                        <span>Certification (Specific all equipment certification and date of expiry) note: no equipment to be dispatched with less than 6 months validation<br /><span class="font-italic"> Laporan Inspeksi pihak ke-3 (untuk ditinjau dan disetujui oleh OA atau TA yang relevan)</span><br /><span class="font-weight-bold">[</span><span class="font-weight-bold" t-field="o.certificat"/><span class="font-weight-bold">]</span></span>
+                                                    </td>
+                                                </td>
+                                                <td style="border: 1px; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_by5" /><br/>
+                                                    </div>
+                                                </td>  
+                                                <td style="border: 1px; border-top-color:#fff; font-size:9px; border-style: solid !important;">
+                                                    <br/><br/>
+                                                    <div class="text-center">
+                                                        <span t-field="o.verif_position5" /><br/>
+                                                    </div>
+                                                </td> 
+                                                <td style="border: 1px; border-top-color:#fff; border-right-color:#fff; font-size:9px; border-style: solid !important;">
+                                                     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700" rel="stylesheet">
+<div class="text-left" style="font-family: 'Caveat', cursive; font-size: 12px;">
+                                                                    <span t-field="o.verif_by5" /><br/>
+                                                                </div>
+                                                            </link> 
+                                                        </link>  
+                                                    </link>
+                                                </td>
+                                                 <td style=" border: 1px; border-style: solid !important;">
+                                                     <t t-if="o.verif_by5">
+                                                        <div class="text-align-center" style="font-size:6px;">
+                                                           <span>Digitally signed by </span><span t-field="o.verif_by5" /><span style="color:#fff;">.</span><span t-field="o.date_for_verificator"/>
+                                                        </div>
+                                                    </t>
+                                                </td>     
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>D</strong></td>
+                                                <td colspan="6" style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>Originator/Dibuat Oleh</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td rowspan="2" style="font-size:9px; border: 1px !important; border-style: solid !important;"></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><strong>Nama/Name</strong></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><strong>Nama/Name</strong></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><strong>Function/Dept</strong></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><strong>Date/Tanggal</strong></td>
+                                                <td colspan="2" style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><strong>Signature/Tanda Tangan</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <!-- <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><strong></strong></td> -->
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><span>Single Point Accountability</span></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">
+                                                    <span t-field="o.originator_name" />
+                                                </td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">
+                                                    <span t-field="o.originator_function" />
+                                                </td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">
+                                                    <t t-if="o.state != 'waemaus'"><span t-field="o.date_origin" /></t>
+                                                </td>
+                                                <td style="font-size:9px; border-color:#fff; ">
+                                                    <t t-if="o.state != 'waemaus'">
+                                                         <link rel="preconnect" href="https://fonts.googleapis.com">
+                                                            <link rel="preconnect" href="https://fonts.gstatic.com">
+                                                                <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700" rel="stylesheet">
+                                                                    <div class="text-left" style="font-family: 'Caveat', cursive; font-size: 12px;">
+                                                                        <span t-field="o.originator_name" /><br/>
+                                                                    </div>
+                                                                </link> 
+                                                            </link>  
+                                                        </link>
+                                                    </t>    
+                                                </td>
+                                                <td style=" border: 1px; border-style: solid !important; border-left-color:#fff;">
+                                                    <t t-if="o.state != 'waemaus'">
+                                                        <t t-if="o.originator_name">
+                                                            <div class="text-align-center" style="font-size:6px;">
+                                                               <span>Digitally signed by </span><span t-field="o.originator_name" /><span style="color:#fff;">.</span><span t-field="o.date_user_approve"/>
+                                                            </div>
+                                                        </t>
+                                                    </t>    
+                                                </td>
+                                             </tr>   
+                                            <tr>
+                                                <td style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>E</strong></td>
+                                                <td colspan="6" style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>Approval/Persetujuan</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:9px; border: 1px !important; border-style: solid !important;">
+                                                </td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"><span>Operation Quality and Certification</span></td>
+                                                <td colspan="2" style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">
+                                                    <span t-field="o.qmmanager_name" />
+                                                </td>
+                                                <t t-if="o.qmmanager_name">
+                                                    <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">
+                                                        <span t-field="o.date_qmmanager_approve" />
+                                                    </td>
+                                                </t>
+                                                <td style="font-size:9px; border-color:#fff; ">
+                                                     <link rel="preconnect" href="https://fonts.googleapis.com">
+                                                        <link rel="preconnect" href="https://fonts.gstatic.com">
+                                                            <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700" rel="stylesheet">
+                                                                <div class="text-left" style="font-family: 'Caveat', cursive; font-size: 12px;">
+                                                                    <span t-field="o.qmmanager_name" /><br/>
+                                                                </div>
+                                                            </link> 
+                                                        </link>  
+                                                    </link>
+                                                </td>
+                                                <td style=" border: 1px; border-style: solid !important; border-left-color:#fff;">
+                                                     <t t-if="o.qmmanager_name">
+                                                        <div class="text-align-center" style="font-size:6px;">
+                                                           <span>Digitally signed by </span><span t-field="o.qmmanager_name" /><span style="color:#fff;">.</span><span t-field="o.date_qmmanager_approve"/>
+                                                        </div>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>F</strong></td>
+                                                <td colspan="6" style="font-size:9px; background-color:#66d138 !important;border: 1px !important; border-style: solid !important;"><strong>Approval for Deviation by TA/Persetujuan jika ada deviasi oleh TA</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">1</td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">TA-OA/EA</td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                                <td colspan="2" style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">2</td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;">TA-OA/EA</td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                                <td style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                                <td colspan="2" style="font-size:9px; !important;border: 1px !important; border-style: solid !important;"></td>
+                                            </tr>
+                                            <tr style="border-color:#fff;">
+                                                <td>
+                                                </td>
+                                                <td colspan="7" style="border-color:#fff; font-size:9px;">
+                                                    <div t-if="o.note_find != false">
+                                                        <span>Note: </span><span class="text-danger" t-field="o.note_find" /><br/>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </odoo>

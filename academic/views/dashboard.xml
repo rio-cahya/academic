@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="act_session_graph">
+            <field name="name">act_session_graph</field>
+            <field name="res_model">academic.session</field>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_academic_session_graph"/>
+        </record> 
+
+        <record model="ir.actions.act_window" id="act_session_calendar">
+            <field name="name">act_session_calendar</field>
+            <field name="res_model">academic.session</field>
+            <field name="view_mode">calendar</field>
+            <field name="view_id" ref="view_academic_session_calendar"/>
+        </record>
+
+        <record model="ir.actions.act_window" id="act_course_list">
+            <field name="name">act_course_list</field>
+            <field name="res_model">academic.course</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="board_session_form">
+            <field name="name">Session Dashboard Form</field>
+            <field name="model">board.board</field>
+	    <field name="type">form</field>
+            <field name="arch" type="xml">
+				<form>
+					<board style="2-1">
+						<column>
+							<action string="Attendee by Course" height="150" width="500" colspan="4" name="%(act_session_graph)d"/>
+							<action string="Session Calendar" colspan="4" name="%(act_session_calendar)d"/>
+						</column>
+						<column>
+							<action string="Course" colspan="4" name="%(act_course_list)d"/>
+						</column>
+					</board>
+				</form>
+		</field>
+        </record> 
+
+        <record model="ir.actions.act_window" id="open_board_session">
+            <field name="name">Session Dashboard</field>
+            <field name="res_model">board.board</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="board_session_form"/>
+        </record> 
+ 
+       <!-- top menu -->
+        <menuitem
+            id="menu_dashboard"
+            name="Dashboard"
+			parent="academic_1" 
+            sequence="0"/>
+
+       <menuitem 
+            id="menu_dashboard_session"
+			name="Session Dashboard" 
+            parent="menu_dashboard"
+			action="open_board_session"
+            sequence="1"/> 
+
+	</data>
+</odoo>

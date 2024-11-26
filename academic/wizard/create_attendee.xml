@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+	
+		<record model="ir.ui.view" id="create_attendee_form">
+			<field name="name">create_attendee_form</field>
+			<field name="model">academic.create.attendee.wizard</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<field name="session_id"/>
+						<field name="session_ids"/>
+						<field name="partner_ids"/>
+					</group>
+					<footer>
+						<button type="special" string="Cancel" special="cancel" icon="fa-times"/>
+						<button name="action_add_attendee" type="object" string="Confirm" icon="fa-check-circle"
+							confirm="Are you sure to add attendee to this session?" />
+					</footer>
+				</form>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="create_attendee_wizard_action">
+			<field name="name">Add Attendee</field>
+			<field name="res_model">academic.create.attendee.wizard</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<record model="ir.actions.server" id="open_wizard_action_server">
+			<field name="name">Add Attendee</field>
+			<field name="model_id" ref="academic.model_academic_session"/>
+			<field name="binding_model_id" ref="academic.model_academic_session"/>
+			<field name="binding_view_types">tree,form</field>
+			<field name="state">code</field>
+			<field name="code">
+                        if records:
+                            action = records.open_wizard()
+			</field>
+		</record>
+
+		<menuitem id="create_attendee_wizard_menu" parent="academic_1" sequence="40" name="Add Attendee" action="create_attendee_wizard_action"/>
+
+	</data>
+</odoo>

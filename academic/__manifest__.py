@@ -28,16 +28,20 @@
     "website": "www.riocahya.com",
     "description": """
     Modul Pengelolaan Academik
-   
+
 """,
-    "depends": ["base"],
+    "depends": ["base","board"],
     "data":[
         "views/menu.xml",
         "views/course.xml",
         "views/session.xml",
         "views/attendee.xml",
         "views/partner.xml",
+        "security/group.xml",
         "security/ir.model.access.csv",
+        "wizard/create_attendee.xml",
+        "report/session.xml",
+        "views/dashboard.xml",
         ],
     "installable": True,
     "application": True,
