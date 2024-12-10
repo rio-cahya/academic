@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="test_addon.form_partner_inherit">
+            <field name="name">test_addon.form_partner_inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="vat" position="after">
+                    <field name="npwp"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="test_addon.tree_partner_inherit">
+            <field name="name">test_addon.tree_partner_inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <field name="email" position="before">
+                    <field name="npwp"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="test_addon.kanban_partner_inherit">
+            <field name="name">test_addon.kanban_partner_inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+            <field name="arch" type="xml">
+                <field name="email" position="after">
+                    <field name="npwp"/>
+                </field>
+            </field>
+        </record>
+        
+    </data>
+
+</odoo>
