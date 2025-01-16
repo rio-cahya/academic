@@ -1,0 +1,35 @@
+id,name,country_id,code
+state_001,Aceh,ID,11
+state_002,Sumatera Utara,ID,12
+state_003,Sumatera Barat,ID,13
+state_004,Riau,ID,14
+state_005,Jambi,ID,15
+state_006,Sumatera Selatan,ID,16
+state_007,Bengkulu,ID,17
+state_008,Lampung,ID,18
+state_009,Kepulauan Bangka Belitung,ID,19
+state_010,Kepulauan Riau,ID,21
+state_011,Dki Jakarta,ID,31
+state_012,Jawa Barat,ID,32
+state_013,Jawa Tengah,ID,33
+state_014,Di Yogyakarta,ID,34
+state_015,Jawa Timur,ID,35
+state_016,Banten,ID,36
+state_017,Bali,ID,51
+state_018,Nusa Tenggara Barat,ID,52
+state_019,Nusa Tenggara Timur,ID,53
+state_020,Kalimantan Barat,ID,61
+state_021,Kalimantan Tengah,ID,62
+state_022,Kalimantan Selatan,ID,63
+state_023,Kalimantan Timur,ID,64
+state_024,Kalimantan Utara,ID,65
+state_025,Sulawesi Utara,ID,71
+state_026,Sulawesi Tengah,ID,72
+state_027,Sulawesi Selatan,ID,73
+state_028,Sulawesi Tenggara,ID,74
+state_029,Gorontalo,ID,75
+state_030,Sulawesi Barat,ID,76
+state_031,Maluku,ID,81
+state_032,Maluku Utara,ID,82
+state_033,Papua Barat,ID,91
+state_034,Papua,ID,94
